@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>KISO GROUP — Type Schemes (Video + Specimens)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Inter:wght@300;400;500&family=Archivo:wght@400;600;700&family=Outfit:wght@200;300;400;600&family=Manrope:wght@300;400;600&family=Syne:wght@600;700;800&family=Space+Grotesk:wght@400;500;700&family=Cormorant+Garamond:wght@300;400;500&family=Playfair+Display:wght@400;500;600&family=Montserrat:wght@300;400;500&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* ---- Kiso brand framework palette ---- */
+    --abyss:#06202B;       /* primary deep */
+    --navy:#04303F;        /* deep teal */
+    --travertine:#E7DDC9;  /* neutral light */
+    --sand:#F2EAD8;        /* off-white */
+    --gold:#C9A96A;        /* champagne accent */
+    --aqua:#2F8AA6;        /* water highlight */
+    --ink:#06141B;         /* near-black */
+    /* live scheme (hero) */
+    --display:'Jost'; --dw:300; --track:.16em; --tt:uppercase; --body:'Inter';
+  }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  html,body{ background:var(--abyss); color:var(--sand); font-family:var(--body),Arial,sans-serif; }
+
+  /* ================= HERO: video + live scheme switch ================= */
+  #stage{ position:relative; width:100%; height:100vh; overflow:hidden; }
+  video{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+  #scrim{ position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(6,32,43,.62) 0%, rgba(6,32,43,.20) 35%, rgba(4,48,63,.40) 70%, rgba(6,32,43,.85) 100%); }
+
+  .center{ position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center; padding:24px; }
+  .eyebrow{ font-family:var(--body); font-weight:400; letter-spacing:.42em; text-transform:uppercase;
+    font-size:12px; color:var(--travertine); opacity:.95; margin-bottom:26px; }
+  .mark{ font-family:var(--display); font-weight:var(--dw); letter-spacing:var(--track); text-transform:var(--tt);
+    font-size:clamp(46px, 10vw, 150px); line-height:.98; color:var(--sand); text-shadow:0 8px 60px rgba(3,16,22,.55); }
+  .tag{ font-family:var(--body); font-weight:300; font-size:clamp(15px,2vw,22px); letter-spacing:.04em;
+    margin-top:18px; color:var(--travertine); }
+  .cta{ margin-top:36px; font-family:var(--body); font-weight:500; letter-spacing:.24em; text-transform:uppercase;
+    font-size:12px; color:var(--sand); text-decoration:none; padding:16px 34px; border:1px solid rgba(201,169,106,.85);
+    background:rgba(6,32,43,.18); backdrop-filter:blur(3px); transition:all .35s ease; cursor:pointer; }
+  .cta:hover{ background:var(--gold); color:var(--ink); border-color:var(--gold); }
+
+  /* scheme spec label, lives in the hero */
+  #spec{ position:absolute; top:22px; left:24px; z-index:4; font-family:'Inter',sans-serif; font-size:12px;
+    line-height:1.6; color:var(--travertine); background:rgba(6,32,43,.55); border:1px solid rgba(231,221,201,.18);
+    padding:14px 16px; border-radius:10px; backdrop-filter:blur(6px); max-width:280px; }
+  #spec b{ color:var(--sand); font-weight:600; letter-spacing:.06em; }
+  #spec .name{ font-size:13px; letter-spacing:.2em; text-transform:uppercase; color:var(--gold); margin-bottom:6px; }
+
+  /* scheme picker (fixed, controls the hero) */
+  #picker{ position:fixed; left:50%; bottom:26px; transform:translateX(-50%); z-index:9;
+    display:flex; gap:8px; flex-wrap:wrap; justify-content:center; padding:10px 12px;
+    background:rgba(6,32,43,.6); border:1px solid rgba(231,221,201,.18); border-radius:40px; backdrop-filter:blur(8px); }
+  #picker button{ font-family:'Inter',sans-serif; font-size:11px; letter-spacing:.12em; text-transform:uppercase;
+    color:var(--travertine); background:transparent; border:0; padding:9px 15px; border-radius:30px; cursor:pointer; transition:all .25s; }
+  #picker button.active{ background:var(--gold); color:var(--ink); }
+  #picker button:hover{ color:var(--aqua); }
+  #picker button.active:hover{ color:var(--ink); }
+
+  /* ================= SPECIMENS: all six in context ================= */
+  #specimens{ position:relative; padding:110px 32px 150px;
+    background-image:linear-gradient(180deg, rgba(6,32,43,.92), rgba(4,48,63,.9)),
+      url('https://stagingkiso.elenafoundation.com/wp-content/uploads/2026/06/IMG_0009.jpg');
+    background-size:cover; background-position:center; background-attachment:fixed; }
+  .specHead{ text-align:center; max-width:760px; margin:0 auto 64px; }
+  .specHead .k{ letter-spacing:.42em; text-transform:uppercase; font-size:12px; color:var(--gold); }
+  .specHead h2{ font-family:'Cormorant Garamond',serif; font-weight:300; font-size:clamp(30px,5vw,56px);
+    margin-top:14px; color:var(--sand); letter-spacing:.02em; }
+  .specHead p{ font-family:'Inter',sans-serif; font-weight:300; color:var(--travertine); margin-top:12px; opacity:.85; }
+
+  .grid{ max-width:1180px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:26px; }
+  @media(max-width:820px){ .grid{ grid-template-columns:1fr; } }
+  .card{ background:rgba(6,20,27,.55); border:1px solid rgba(231,221,201,.15); border-radius:14px;
+    padding:38px 34px; backdrop-filter:blur(7px); }
+  .card .cap{ font-family:'Inter',sans-serif; font-size:11px; letter-spacing:.2em; text-transform:uppercase;
+    color:var(--gold); margin-bottom:18px; }
+  .card .line{ width:54px; height:1px; background:var(--gold); margin:0 0 22px; opacity:.8; }
+  .card h3{ color:var(--sand); font-size:clamp(28px,3.4vw,42px); line-height:1.02; margin-bottom:16px; }
+  .card p{ color:var(--travertine); font-weight:300; font-size:16px; line-height:1.75; opacity:.92; }
+  .card .cta2{ display:inline-block; margin-top:26px; font-size:11px; letter-spacing:.22em; text-transform:uppercase;
+    color:var(--sand); text-decoration:none; padding:13px 26px; border:1px solid rgba(201,169,106,.8);
+    transition:all .3s ease; cursor:pointer; }
+  .card .cta2:hover{ background:var(--gold); color:var(--ink); }
+
+  /* ================= BRAND COLORS over ledge video ================= */
+  #palette{ position:relative; overflow:hidden; padding:110px 32px 150px; }
+  #palette video.bg{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0; }
+  #palette .pscrim{ display:none; }   /* no overlay — show the ledge video cleanly */
+  #palette .specHead h2, #palette .specHead p, #palette .specHead .k{ text-shadow:0 3px 22px rgba(3,16,22,.7); }
+  #palette .pinner{ position:relative; z-index:2; max-width:1180px; margin:0 auto; }
+
+  .swatches{ display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-top:40px; }
+  @media(max-width:900px){ .swatches{ grid-template-columns:repeat(2,1fr); } }
+  .sw{ border-radius:12px; overflow:hidden; border:1px solid rgba(231,221,201,.16);
+    background:rgba(6,20,27,.5); backdrop-filter:blur(6px); }
+  .sw .chip{ height:118px; }
+  .sw .meta{ padding:14px 16px 18px; }
+  .sw .nm{ color:var(--sand); font-family:'Inter',sans-serif; font-size:14px; letter-spacing:.04em; }
+  .sw .hex{ color:var(--gold); font-family:'Space Grotesk',monospace; font-size:13px; margin-top:5px; letter-spacing:.08em; }
+  .sw .role{ color:var(--travertine); font-size:10px; opacity:.72; margin-top:7px; text-transform:uppercase; letter-spacing:.18em; }
+
+  /* colors in use */
+  .inuse{ margin-top:54px; display:grid; grid-template-columns:1fr 1fr; border-radius:14px; overflow:hidden;
+    border:1px solid rgba(231,221,201,.16); }
+  @media(max-width:820px){ .inuse{ grid-template-columns:1fr; } }
+  .demo{ padding:54px 46px; }
+  .demoDark{ background:var(--abyss); }
+  .demoLight{ background:var(--sand); }
+  .demo .eb{ letter-spacing:.4em; text-transform:uppercase; font-size:11px; }
+  .demo h4{ font-family:'Cormorant Garamond',serif; font-weight:300; font-size:34px; margin:12px 0 14px; line-height:1.05; }
+  .demo p{ font-family:'Inter',sans-serif; font-weight:300; font-size:15px; line-height:1.7; }
+  .demo .b{ display:inline-block; margin-top:22px; font-family:'Inter',sans-serif; font-size:11px; letter-spacing:.22em;
+    text-transform:uppercase; padding:13px 26px; cursor:pointer; }
+  .demoDark .eb{ color:var(--gold); } .demoDark h4{ color:var(--sand); } .demoDark p{ color:var(--travertine); }
+  .demoDark .b{ background:var(--gold); color:var(--ink); }
+  .demoDark .lnk{ color:var(--aqua); }
+  .demoLight .eb{ color:var(--gold); } .demoLight h4{ color:var(--ink); } .demoLight p{ color:var(--navy); }
+  .demoLight .b{ background:var(--ink); color:var(--sand); }
+</style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<div id="stage">
+  <video id="vid" autoplay muted loop playsinline
+    poster="https://cdn.openart.ai/openart/thumbnail/production/2026-06/create-video/Ch6CJLeguTHDQJzxVO5s/f515d4511bb7d1490fa8b6d1ab995cc3-8e2c823e-76d0-4b2e-a8bb-434806d39974_1782277516002_19f89b45.webp">
+    <source src="https://stagingkiso.elenafoundation.com/wp-content/uploads/2026/06/openart-f515d4511bb7d1490fa8b6d1ab995cc3-8e2c823e-76d0-4b2e-a8bb-434806d39974_1782277502859_b3f69716-1.mp4" type="video/mp4">
+  </video>
+  <div id="scrim"></div>
+  <div id="spec"></div>
+  <div class="center">
+    <div class="eyebrow">Miami &middot; Luxury Aquatic Construction</div>
+    <div class="mark">KISO&nbsp;GROUP</div>
+    <div class="tag">Where architecture meets water</div>
+    <a class="cta">Start a Project</a>
+  </div>
+</div>
+
+<!-- ===== SPECIMENS ===== -->
+<section id="specimens">
+  <div class="specHead">
+    <div class="k">Type in Context</div>
+    <h2>All six schemes, at play</h2>
+    <p>Each scheme shown with its headline + body pairing over a real Kiso project image.</p>
+  </div>
+  <div class="grid" id="grid"></div>
+</section>
+
+<!-- ===== BRAND COLORS ===== -->
+<section id="palette">
+  <video class="bg" autoplay muted loop playsinline
+    poster="https://cdn.openart.ai/openart/thumbnail/production/2026-06/create-video/Ch6CJLeguTHDQJzxVO5s/73f2235c377170e5d4dc3fc05e5777dd-18208de5-cbae-4207-9d44-640161c72ce0_1782280754496_53af2be1.webp">
+    <source src="https://stagingkiso.elenafoundation.com/wp-content/uploads/2026/06/openart-73f2235c377170e5d4dc3fc05e5777dd-18208de5-cbae-4207-9d44-640161c72ce0_1782280749959_846a321e.mp4" type="video/mp4">
+  </video>
+  <div class="pscrim"></div>
+  <div class="pinner">
+    <div class="specHead">
+      <div class="k">Brand Colors</div>
+      <h2>The palette, at play</h2>
+      <p>Seven colors over flowing water &mdash; deep teals, travertine neutrals, and a single champagne accent.</p>
+    </div>
+    <div class="swatches" id="swatches"></div>
+
+    <div class="inuse">
+      <div class="demo demoDark">
+        <div class="eb">Commercial &middot; Deep</div>
+        <h4>Engineered like architecture.</h4>
+        <p>Abyss and Pool Navy ground the dark sections; Sand and Travertine carry the text; Aqua marks a <span class="lnk">link in motion</span>.</p>
+        <span class="b">Start a Project</span>
+      </div>
+      <div class="demo demoLight">
+        <div class="eb">Residential &middot; Light</div>
+        <h4>Finished like art.</h4>
+        <p>On Sand backgrounds, Ink carries the type and Pool Navy the body copy, with the same champagne accent for action.</p>
+        <span class="b">Request a Consultation</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PICKER ===== -->
+<div id="picker">
+  <button data-i="0" class="active">Quiet Luxury</button>
+  <button data-i="1">Architectural</button>
+  <button data-i="2">Coastal Modern</button>
+  <button data-i="3">Editorial</button>
+  <button data-i="4">Estate Classic</button>
+  <button data-i="5">Modern Editorial</button>
+</div>
+
+<script>
+const schemes = [
+  { name:'Quiet Luxury',  display:'Jost',          dw:300, track:'.16em', tt:'uppercase', body:'Inter',
+    note:'Geometric, Futura-like. Understated, fashion-grade. Wide tracking, light weight.' },
+  { name:'Architectural', display:'Archivo',       dw:700, track:'.01em', tt:'uppercase', body:'Inter',
+    note:'Structural and confident. Reads engineering + commercial scale. Tight, bold.' },
+  { name:'Coastal Modern',display:'Outfit',        dw:300, track:'.06em', tt:'none',      body:'Manrope',
+    note:'Soft, airy, resort-modern. Clean and friendly without losing polish.' },
+  { name:'Editorial',     display:'Syne',          dw:700, track:'.005em',tt:'uppercase', body:'Inter',
+    note:'Design-forward, gallery energy. Distinctive letterforms for a bold luxury brand.' },
+  { name:'Estate Classic',  display:'Cormorant Garamond', dw:400, track:'.07em', tt:'uppercase', body:'Montserrat',
+    note:'SERIF headline. High-contrast, old-money elegance + Montserrat body. Refined estate luxury.' },
+  { name:'Modern Editorial',display:'Playfair Display',   dw:500, track:'.005em',tt:'none',      body:'Lato',
+    note:'SERIF headline. Classic editorial Playfair + warm Lato body. Magazine-grade luxury.' }
+];
+
+/* ---- hero live switch ---- */
+const root = document.documentElement.style;
+const spec = document.getElementById('spec');
+function apply(i){
+  const s = schemes[i];
+  root.setProperty('--display', "'"+s.display+"'");
+  root.setProperty('--dw', s.dw);
+  root.setProperty('--track', s.track);
+  root.setProperty('--tt', s.tt);
+  root.setProperty('--body', "'"+s.body+"'");
+  spec.innerHTML = `<div class="name">${s.name}</div>
+    <div><b>Headlines:</b> ${s.display} ${s.dw}</div>
+    <div><b>Body / UI:</b> ${s.body}</div>
+    <div style="margin-top:8px;opacity:.85">${s.note}</div>`;
+  document.querySelectorAll('#picker button').forEach((b,bi)=> b.classList.toggle('active', bi===i));
+}
+document.querySelectorAll('#picker button').forEach(b=> b.addEventListener('click', ()=> apply(+b.dataset.i)));
+apply(0);
+
+/* ---- build specimen cards (all six, fixed to their own fonts) ---- */
+const lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.";
+const grid = document.getElementById('grid');
+schemes.forEach((s,i)=>{
+  const card = document.createElement('div');
+  card.className = 'card';
+  const n = (i+1).toString().padStart(2,'0');
+  card.innerHTML = `
+    <div class="cap">${n} &middot; ${s.name} &mdash; ${s.display} / ${s.body}</div>
+    <div class="line"></div>
+    <h3 style="font-family:'${s.display}',serif;font-weight:${s.dw};letter-spacing:${s.track};text-transform:${s.tt}">Lorem ipsum dolor sit amet</h3>
+    <p style="font-family:'${s.body}',sans-serif">${lorem}</p>
+    <a class="cta2" style="font-family:'${s.body}',sans-serif">Start a Project</a>`;
+  grid.appendChild(card);
+});
+
+/* ---- brand color swatches (with hex codes) ---- */
+const palette = [
+  { name:'Abyss',      hex:'#06202B', role:'Primary deep' },
+  { name:'Pool Navy',  hex:'#04303F', role:'Deep teal' },
+  { name:'Travertine', hex:'#E7DDC9', role:'Neutral light' },
+  { name:'Sand',       hex:'#F2EAD8', role:'Off-white' },
+  { name:'Champagne',  hex:'#C9A96A', role:'Accent metallic' },
+  { name:'Aqua',       hex:'#2F8AA6', role:'Water highlight' },
+  { name:'Ink',        hex:'#06141B', role:'Near-black' }
+];
+const sw = document.getElementById('swatches');
+palette.forEach(c=>{
+  const el = document.createElement('div');
+  el.className = 'sw';
+  el.innerHTML = `<div class="chip" style="background:${c.hex}"></div>
+    <div class="meta"><div class="nm">${c.name}</div><div class="hex">${c.hex}</div><div class="role">${c.role}</div></div>`;
+  sw.appendChild(el);
+});
+</script>
+</body>
+</html>
