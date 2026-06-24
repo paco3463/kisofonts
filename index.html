@@ -3,210 +3,429 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>KISO GROUP — Type Schemes (Video + Specimens)</title>
+<title>KISO GROUP — Brand Experience & SEO Guidebook</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Inter:wght@300;400;500&family=Archivo:wght@400;600;700&family=Outfit:wght@200;300;400;600&family=Manrope:wght@300;400;600&family=Syne:wght@600;700;800&family=Space+Grotesk:wght@400;500;700&family=Cormorant+Garamond:wght@300;400;500&family=Playfair+Display:wght@400;500;600&family=Montserrat:wght@300;400;500&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Inter:wght@300;400;500&family=Archivo:wght@400;600;700&family=Outfit:wght@200;300;400;600&family=Manrope:wght@300;400;600&family=Syne:wght@600;700;800&family=Space+Grotesk:wght@400;500;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500&family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    /* ---- Kiso brand framework palette ---- */
-    --abyss:#06202B;       /* primary deep */
-    --navy:#04303F;        /* deep teal */
-    --travertine:#E7DDC9;  /* neutral light */
-    --sand:#F2EAD8;        /* off-white */
-    --gold:#C9A96A;        /* champagne accent */
-    --aqua:#2F8AA6;        /* water highlight */
-    --ink:#06141B;         /* near-black */
-    /* live scheme (hero) */
+    --abyss:#06202B; --navy:#04303F; --travertine:#E7DDC9; --sand:#F2EAD8;
+    --gold:#C9A96A; --aqua:#2F8AA6; --ink:#06141B;
+    --serif:'Cormorant Garamond',Georgia,serif;
+    --sans:'Montserrat','Helvetica Neue',Arial,sans-serif;
+    --mono:'Space Grotesk',monospace;
+    /* live hero scheme */
     --display:'Jost'; --dw:300; --track:.16em; --tt:uppercase; --body:'Inter';
   }
   *{ margin:0; padding:0; box-sizing:border-box; }
-  html,body{ background:var(--abyss); color:var(--sand); font-family:var(--body),Arial,sans-serif; }
+  html{ scroll-behavior:smooth; }
+  body{ background:var(--abyss); color:var(--sand); font-family:var(--sans); font-weight:300; line-height:1.7; }
+  .wrap{ max-width:1120px; margin:0 auto; padding:0 32px; }
+  h1,h2,h3,h4{ font-family:var(--serif); font-weight:300; letter-spacing:.01em; }
+  .em{ font-style:italic; color:var(--gold); }
+  .eyebrow{ font-family:var(--sans); font-weight:400; letter-spacing:.42em; text-transform:uppercase; font-size:11px; color:var(--gold); }
 
-  /* ================= HERO: video + live scheme switch ================= */
+  /* nav */
+  nav{ position:fixed; top:0; left:0; right:0; z-index:30; display:flex; justify-content:space-between; align-items:center;
+    padding:16px 32px; background:rgba(6,20,27,.5); backdrop-filter:blur(10px); border-bottom:1px solid rgba(231,221,201,.12); }
+  nav .brand{ font-family:var(--serif); font-size:20px; letter-spacing:.22em; color:var(--sand); }
+  nav .links{ display:flex; gap:24px; font-size:11px; letter-spacing:.16em; text-transform:uppercase; }
+  nav .links a{ color:var(--travertine); text-decoration:none; opacity:.85; transition:color .25s; }
+  nav .links a:hover{ color:var(--gold); }
+  @media(max-width:820px){ nav .links{ display:none; } }
+
+  /* ===== HERO with live font switcher ===== */
   #stage{ position:relative; width:100%; height:100vh; overflow:hidden; }
-  video{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
-  #scrim{ position:absolute; inset:0;
-    background:linear-gradient(180deg, rgba(6,32,43,.62) 0%, rgba(6,32,43,.20) 35%, rgba(4,48,63,.40) 70%, rgba(6,32,43,.85) 100%); }
-
-  .center{ position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center;
-    text-align:center; padding:24px; }
-  .eyebrow{ font-family:var(--body); font-weight:400; letter-spacing:.42em; text-transform:uppercase;
-    font-size:12px; color:var(--travertine); opacity:.95; margin-bottom:26px; }
+  #stage video{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0; }
+  #hscrim{ position:absolute; inset:0; z-index:1;
+    background:linear-gradient(180deg, rgba(6,32,43,.6) 0%, rgba(6,32,43,.2) 35%, rgba(4,48,63,.4) 70%, rgba(6,32,43,.86) 100%); }
+  .center{ position:absolute; inset:0; z-index:2; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:24px; }
+  .center .eyebrow{ color:var(--travertine); margin-bottom:24px; }
   .mark{ font-family:var(--display); font-weight:var(--dw); letter-spacing:var(--track); text-transform:var(--tt);
-    font-size:clamp(46px, 10vw, 150px); line-height:.98; color:var(--sand); text-shadow:0 8px 60px rgba(3,16,22,.55); }
-  .tag{ font-family:var(--body); font-weight:300; font-size:clamp(15px,2vw,22px); letter-spacing:.04em;
-    margin-top:18px; color:var(--travertine); }
-  .cta{ margin-top:36px; font-family:var(--body); font-weight:500; letter-spacing:.24em; text-transform:uppercase;
-    font-size:12px; color:var(--sand); text-decoration:none; padding:16px 34px; border:1px solid rgba(201,169,106,.85);
-    background:rgba(6,32,43,.18); backdrop-filter:blur(3px); transition:all .35s ease; cursor:pointer; }
-  .cta:hover{ background:var(--gold); color:var(--ink); border-color:var(--gold); }
-
-  /* scheme spec label, lives in the hero */
-  #spec{ position:absolute; top:22px; left:24px; z-index:4; font-family:'Inter',sans-serif; font-size:12px;
-    line-height:1.6; color:var(--travertine); background:rgba(6,32,43,.55); border:1px solid rgba(231,221,201,.18);
-    padding:14px 16px; border-radius:10px; backdrop-filter:blur(6px); max-width:280px; }
-  #spec b{ color:var(--sand); font-weight:600; letter-spacing:.06em; }
+    font-size:clamp(46px,10vw,150px); line-height:.98; color:var(--sand); text-shadow:0 8px 60px rgba(3,16,22,.55); }
+  .htag{ font-family:var(--serif); font-style:italic; font-size:clamp(16px,2.2vw,28px); color:var(--travertine); margin-top:16px; }
+  .heroCta{ margin-top:34px; font-family:var(--sans); font-weight:500; letter-spacing:.24em; text-transform:uppercase;
+    font-size:12px; color:var(--sand); text-decoration:none; padding:15px 32px; border:1px solid rgba(201,169,106,.85);
+    background:rgba(6,32,43,.18); backdrop-filter:blur(3px); transition:all .35s; }
+  .heroCta:hover{ background:var(--gold); color:var(--ink); }
+  #spec{ position:absolute; top:84px; left:24px; z-index:4; font-family:'Inter',sans-serif; font-size:12px; line-height:1.6;
+    color:var(--travertine); background:rgba(6,32,43,.55); border:1px solid rgba(231,221,201,.18); padding:14px 16px;
+    border-radius:10px; backdrop-filter:blur(6px); max-width:270px; }
   #spec .name{ font-size:13px; letter-spacing:.2em; text-transform:uppercase; color:var(--gold); margin-bottom:6px; }
-
-  /* scheme picker (fixed, controls the hero) */
-  #picker{ position:fixed; left:50%; bottom:26px; transform:translateX(-50%); z-index:9;
-    display:flex; gap:8px; flex-wrap:wrap; justify-content:center; padding:10px 12px;
-    background:rgba(6,32,43,.6); border:1px solid rgba(231,221,201,.18); border-radius:40px; backdrop-filter:blur(8px); }
-  #picker button{ font-family:'Inter',sans-serif; font-size:11px; letter-spacing:.12em; text-transform:uppercase;
-    color:var(--travertine); background:transparent; border:0; padding:9px 15px; border-radius:30px; cursor:pointer; transition:all .25s; }
+  #spec b{ color:var(--sand); font-weight:600; }
+  #picker{ position:absolute; left:50%; bottom:22px; transform:translateX(-50%); z-index:5; display:flex; gap:7px; flex-wrap:wrap;
+    justify-content:center; padding:9px 11px; background:rgba(6,32,43,.6); border:1px solid rgba(231,221,201,.18);
+    border-radius:40px; backdrop-filter:blur(8px); max-width:94vw; }
+  #picker button{ font-family:'Inter',sans-serif; font-size:11px; letter-spacing:.1em; text-transform:uppercase;
+    color:var(--travertine); background:transparent; border:0; padding:8px 14px; border-radius:30px; cursor:pointer; transition:all .25s; }
   #picker button.active{ background:var(--gold); color:var(--ink); }
   #picker button:hover{ color:var(--aqua); }
   #picker button.active:hover{ color:var(--ink); }
 
-  /* ================= SPECIMENS: all six in context ================= */
-  #specimens{ position:relative; padding:110px 32px 150px;
-    background-image:linear-gradient(180deg, rgba(6,32,43,.92), rgba(4,48,63,.9)),
-      url('https://stagingkiso.elenafoundation.com/wp-content/uploads/2026/06/IMG_0009.jpg');
-    background-size:cover; background-position:center; background-attachment:fixed; }
-  .specHead{ text-align:center; max-width:760px; margin:0 auto 64px; }
+  /* ===== sections ===== */
+  section{ padding:104px 0; }
+  section.light{ background:var(--sand); color:var(--ink); }
+  section.light .eyebrow{ color:#9a7b3f; }
+  section.light h2,section.light h3{ color:var(--ink); }
+  section.light .em{ color:#a9853f; }
+  section.navy{ background:var(--navy); }
+  h2.big{ font-size:clamp(34px,5.5vw,68px); line-height:1.02; margin:16px 0 8px; }
+  .lead{ font-size:clamp(17px,2vw,21px); max-width:780px; }
+  section.light .lead{ color:#3a4a52; }
+  .muted{ opacity:.85; }
+  .divider{ width:64px; height:1px; background:var(--gold); margin:26px 0; }
+
+  .specHead{ text-align:center; max-width:780px; margin:0 auto 56px; }
   .specHead .k{ letter-spacing:.42em; text-transform:uppercase; font-size:12px; color:var(--gold); }
-  .specHead h2{ font-family:'Cormorant Garamond',serif; font-weight:300; font-size:clamp(30px,5vw,56px);
-    margin-top:14px; color:var(--sand); letter-spacing:.02em; }
-  .specHead p{ font-family:'Inter',sans-serif; font-weight:300; color:var(--travertine); margin-top:12px; opacity:.85; }
+  .specHead h2{ font-family:var(--serif); font-weight:300; font-size:clamp(30px,5vw,56px); margin-top:14px; color:var(--sand); letter-spacing:.02em; }
+  .specHead p{ font-family:var(--sans); font-weight:300; color:var(--travertine); margin-top:12px; opacity:.85; }
 
-  .grid{ max-width:1180px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:26px; }
+  /* type specimens */
+  .grid{ max-width:1120px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:24px; }
   @media(max-width:820px){ .grid{ grid-template-columns:1fr; } }
-  .card{ background:rgba(6,20,27,.55); border:1px solid rgba(231,221,201,.15); border-radius:14px;
-    padding:38px 34px; backdrop-filter:blur(7px); }
-  .card .cap{ font-family:'Inter',sans-serif; font-size:11px; letter-spacing:.2em; text-transform:uppercase;
-    color:var(--gold); margin-bottom:18px; }
-  .card .line{ width:54px; height:1px; background:var(--gold); margin:0 0 22px; opacity:.8; }
-  .card h3{ color:var(--sand); font-size:clamp(28px,3.4vw,42px); line-height:1.02; margin-bottom:16px; }
-  .card p{ color:var(--travertine); font-weight:300; font-size:16px; line-height:1.75; opacity:.92; }
-  .card .cta2{ display:inline-block; margin-top:26px; font-size:11px; letter-spacing:.22em; text-transform:uppercase;
-    color:var(--sand); text-decoration:none; padding:13px 26px; border:1px solid rgba(201,169,106,.8);
-    transition:all .3s ease; cursor:pointer; }
-  .card .cta2:hover{ background:var(--gold); color:var(--ink); }
+  .tcard{ background:rgba(6,20,27,.55); border:1px solid rgba(231,221,201,.15); border-radius:14px; padding:36px 32px; }
+  .tcard .cap{ font-family:'Inter',sans-serif; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--gold); margin-bottom:16px; }
+  .tcard .l{ width:54px; height:1px; background:var(--gold); margin:0 0 20px; opacity:.8; }
+  .tcard h3{ color:var(--sand); font-size:clamp(28px,3.4vw,42px); line-height:1.02; margin-bottom:16px; }
+  .tcard p{ color:var(--travertine); font-weight:300; font-size:16px; line-height:1.75; opacity:.92; }
+  .tcard .cta2{ display:inline-block; margin-top:24px; font-size:11px; letter-spacing:.22em; text-transform:uppercase;
+    color:var(--sand); text-decoration:none; padding:12px 24px; border:1px solid rgba(201,169,106,.8); transition:all .3s; }
+  .tcard .cta2:hover{ background:var(--gold); color:var(--ink); }
 
-  /* ================= BRAND COLORS over ledge video ================= */
-  #palette{ position:relative; overflow:hidden; padding:110px 32px 150px; }
+  /* palette over ledge video (no overlay) */
+  #palette{ position:relative; overflow:hidden; padding:104px 32px 132px; }
   #palette video.bg{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0; }
-  #palette .pscrim{ display:none; }   /* no overlay — show the ledge video cleanly */
-  #palette .specHead h2, #palette .specHead p, #palette .specHead .k{ text-shadow:0 3px 22px rgba(3,16,22,.7); }
-  #palette .pinner{ position:relative; z-index:2; max-width:1180px; margin:0 auto; }
-
-  .swatches{ display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-top:40px; }
-  @media(max-width:900px){ .swatches{ grid-template-columns:repeat(2,1fr); } }
-  .sw{ border-radius:12px; overflow:hidden; border:1px solid rgba(231,221,201,.16);
-    background:rgba(6,20,27,.5); backdrop-filter:blur(6px); }
-  .sw .chip{ height:118px; }
+  #palette .pinner{ position:relative; z-index:2; max-width:1120px; margin:0 auto; }
+  #palette .specHead h2,#palette .specHead p,#palette .specHead .k{ text-shadow:0 3px 22px rgba(3,16,22,.75); }
+  .swatches{ display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:38px; }
+  @media(max-width:900px){ .swatches{ grid-template-columns:repeat(2,1fr);} }
+  .sw{ border-radius:12px; overflow:hidden; border:1px solid rgba(231,221,201,.16); background:rgba(6,20,27,.5); backdrop-filter:blur(6px); }
+  .sw .chip{ height:108px; }
   .sw .meta{ padding:14px 16px 18px; }
-  .sw .nm{ color:var(--sand); font-family:'Inter',sans-serif; font-size:14px; letter-spacing:.04em; }
-  .sw .hex{ color:var(--gold); font-family:'Space Grotesk',monospace; font-size:13px; margin-top:5px; letter-spacing:.08em; }
-  .sw .role{ color:var(--travertine); font-size:10px; opacity:.72; margin-top:7px; text-transform:uppercase; letter-spacing:.18em; }
-
-  /* colors in use */
-  .inuse{ margin-top:54px; display:grid; grid-template-columns:1fr 1fr; border-radius:14px; overflow:hidden;
-    border:1px solid rgba(231,221,201,.16); }
+  .sw .nm{ font-family:var(--sans); font-weight:400; font-size:14px; color:var(--sand); letter-spacing:.03em; }
+  .sw .hex{ font-family:var(--mono); font-size:13px; color:var(--gold); margin-top:5px; letter-spacing:.06em; }
+  .sw .role{ font-size:10px; color:var(--travertine); opacity:.72; text-transform:uppercase; letter-spacing:.16em; margin-top:7px; }
+  .inuse{ margin-top:50px; display:grid; grid-template-columns:1fr 1fr; border-radius:14px; overflow:hidden; border:1px solid rgba(231,221,201,.16); }
   @media(max-width:820px){ .inuse{ grid-template-columns:1fr; } }
-  .demo{ padding:54px 46px; }
-  .demoDark{ background:var(--abyss); }
-  .demoLight{ background:var(--sand); }
+  .demo{ padding:50px 44px; } .demoDark{ background:var(--abyss); } .demoLight{ background:var(--sand); }
   .demo .eb{ letter-spacing:.4em; text-transform:uppercase; font-size:11px; }
-  .demo h4{ font-family:'Cormorant Garamond',serif; font-weight:300; font-size:34px; margin:12px 0 14px; line-height:1.05; }
-  .demo p{ font-family:'Inter',sans-serif; font-weight:300; font-size:15px; line-height:1.7; }
-  .demo .b{ display:inline-block; margin-top:22px; font-family:'Inter',sans-serif; font-size:11px; letter-spacing:.22em;
-    text-transform:uppercase; padding:13px 26px; cursor:pointer; }
-  .demoDark .eb{ color:var(--gold); } .demoDark h4{ color:var(--sand); } .demoDark p{ color:var(--travertine); }
-  .demoDark .b{ background:var(--gold); color:var(--ink); }
-  .demoDark .lnk{ color:var(--aqua); }
-  .demoLight .eb{ color:var(--gold); } .demoLight h4{ color:var(--ink); } .demoLight p{ color:var(--navy); }
-  .demoLight .b{ background:var(--ink); color:var(--sand); }
+  .demo h4{ font-family:var(--serif); font-weight:300; font-size:32px; margin:12px 0 14px; line-height:1.05; }
+  .demo p{ font-family:var(--sans); font-weight:300; font-size:15px; line-height:1.7; }
+  .demoDark .eb{ color:var(--gold);} .demoDark h4{ color:var(--sand);} .demoDark p{ color:var(--travertine);} .demoDark .lnk{ color:var(--aqua);}
+  .demoLight .eb{ color:#9a7b3f;} .demoLight h4{ color:var(--ink);} .demoLight p{ color:var(--navy);}
+
+  /* numbers */
+  .nums{ display:grid; grid-template-columns:repeat(4,1fr); gap:24px; margin-top:46px; text-align:center; }
+  @media(max-width:780px){ .nums{ grid-template-columns:repeat(2,1fr);} }
+  .nums .n{ font-family:var(--serif); font-size:clamp(40px,6vw,72px); color:var(--gold); line-height:1; }
+  .nums .l{ font-family:var(--sans); font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--travertine); margin-top:10px; }
+  section.light .nums .l{ color:#5a6a72; }
+
+  /* keyword groups */
+  .kg{ display:grid; grid-template-columns:repeat(2,1fr); gap:26px; margin-top:40px; }
+  @media(max-width:820px){ .kg{ grid-template-columns:1fr; } }
+  .kgcard h4{ font-size:22px; color:var(--ink); margin-bottom:12px; }
+  .chips{ display:flex; flex-wrap:wrap; gap:8px; }
+  .chip2{ font-family:var(--sans); font-size:12px; padding:7px 13px; border-radius:30px; background:rgba(6,32,43,.06); border:1px solid rgba(6,20,27,.14); color:#2a3a42; }
+
+  .tree{ font-family:var(--mono); font-size:14px; line-height:2; color:#2a3a42; background:rgba(6,32,43,.05); border:1px solid rgba(6,20,27,.12); border-radius:12px; padding:28px 30px; margin-top:34px; white-space:pre; overflow-x:auto; }
+
+  /* per-page SEO */
+  .pages{ display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-top:40px; }
+  @media(max-width:820px){ .pages{ grid-template-columns:1fr; } }
+  .pcard{ border:1px solid rgba(231,221,201,.18); border-radius:12px; padding:26px; background:rgba(255,255,255,.02); }
+  .pcard .pg{ font-family:var(--sans); font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:var(--gold); }
+  .pcard h4{ font-size:24px; margin:8px 0 12px; color:var(--sand); }
+  .pcard .h2s{ display:flex; flex-wrap:wrap; gap:6px; margin-bottom:12px; }
+  .pcard .h2s span{ font-family:var(--sans); font-size:10.5px; letter-spacing:.05em; padding:4px 9px; border-radius:20px; background:rgba(47,138,166,.16); color:#bfe6f0; border:1px solid rgba(47,138,166,.3); }
+  .pcard .lbl{ font-family:var(--sans); font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--aqua); margin-top:10px; }
+  .pcard .val{ font-family:var(--sans); font-size:13px; color:var(--travertine); }
+
+  /* google result card */
+  .gcard{ max-width:720px; margin:38px auto 0; background:#fff; color:#202124; border-radius:10px; overflow:hidden; box-shadow:0 24px 70px rgba(0,0,0,.35); }
+  .gcard .top{ display:flex; gap:18px; padding:26px 28px; align-items:flex-start; }
+  .gcard .icon{ width:46px; height:46px; border-radius:50%; background:#5f6368; color:#fff; display:flex; align-items:center; justify-content:center; font-size:24px; font-style:italic; font-family:Georgia,serif; flex:0 0 auto; }
+  .gcard .top h3{ font-family:Arial,sans-serif; font-weight:500; font-size:20px; color:#202124; }
+  .gcard .top p{ font-family:Arial,sans-serif; font-size:14px; color:#5f6368; margin-top:4px; }
+  .gcard .tabs{ border-top:1px solid #eee; padding:16px 28px; font-family:Arial,sans-serif; font-size:13px; letter-spacing:.06em; color:#5f6368; }
+  .gcard .tabs b{ color:#1a73e8; font-weight:500; margin-right:24px; }
+  .gcard .crawl{ border-top:1px solid #eee; padding:18px 28px; display:flex; align-items:center; gap:12px; font-family:Arial,sans-serif; font-size:14px; color:#202124; }
+  .gcard .crawl .ok{ width:22px; height:22px; border-radius:50%; background:#1e8e3e; color:#fff; display:flex; align-items:center; justify-content:center; font-size:13px; }
+
+  pre.code{ margin-top:28px; background:#04161e; border:1px solid rgba(231,221,201,.16); border-radius:12px; padding:26px 24px; overflow-x:auto; font-family:var(--mono); font-size:12.5px; line-height:1.65; color:#bfe6f0; }
+  .install{ font-family:var(--mono); font-size:13px; color:var(--gold); background:rgba(201,169,106,.08); border:1px solid rgba(201,169,106,.3); border-radius:8px; padding:12px 16px; margin-top:18px; display:inline-block; }
+
+  /* video divider bands */
+  .band{ position:relative; height:48vh; overflow:hidden; display:flex; align-items:center; justify-content:center; text-align:center; }
+  .band video{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0; }
+  .band .vscrim{ position:absolute; inset:0; z-index:1; background:linear-gradient(180deg, rgba(6,32,43,.5), rgba(4,48,63,.3) 50%, rgba(6,20,27,.78)); }
+  .band .quietline{ position:relative; z-index:2; font-family:var(--serif); font-size:clamp(26px,4vw,52px); color:var(--sand); padding:24px; text-shadow:0 6px 40px rgba(3,16,22,.7); }
+
+  a.cta{ display:inline-block; margin-top:30px; font-family:var(--sans); font-size:12px; letter-spacing:.24em; text-transform:uppercase; color:var(--sand); text-decoration:none; padding:16px 34px; border:1px solid var(--gold); transition:all .35s; }
+  a.cta:hover{ background:var(--gold); color:var(--ink); }
+
+  footer{ background:var(--ink); padding:70px 32px; text-align:center; }
+  footer .brand{ font-family:var(--serif); font-size:26px; letter-spacing:.22em; color:var(--sand); }
+  footer p{ color:#7fa0ab; font-size:12px; letter-spacing:.08em; margin-top:14px; }
 </style>
 </head>
 <body>
 
-<!-- ===== HERO ===== -->
+<nav>
+  <div class="brand">KISO</div>
+  <div class="links">
+    <a href="#type">Type</a><a href="#palette">Color</a><a href="#position">Brand</a>
+    <a href="#seo">SEO</a><a href="#schema">Structured Data</a>
+  </div>
+</nav>
+
+<!-- ===== HERO: video + live font switcher ===== -->
 <div id="stage">
-  <video id="vid" autoplay muted loop playsinline
-    poster="https://cdn.openart.ai/openart/thumbnail/production/2026-06/create-video/Ch6CJLeguTHDQJzxVO5s/f515d4511bb7d1490fa8b6d1ab995cc3-8e2c823e-76d0-4b2e-a8bb-434806d39974_1782277516002_19f89b45.webp">
+  <video autoplay muted loop playsinline poster="https://stagingkiso.elenafoundation.com/wp-content/uploads/2026/06/FAR.jpg">
     <source src="https://stagingkiso.elenafoundation.com/wp-content/uploads/2026/06/openart-f515d4511bb7d1490fa8b6d1ab995cc3-8e2c823e-76d0-4b2e-a8bb-434806d39974_1782277502859_b3f69716-1.mp4" type="video/mp4">
   </video>
-  <div id="scrim"></div>
+  <div id="hscrim"></div>
   <div id="spec"></div>
   <div class="center">
     <div class="eyebrow">Miami &middot; Luxury Aquatic Construction</div>
     <div class="mark">KISO&nbsp;GROUP</div>
-    <div class="tag">Where architecture meets water</div>
-    <a class="cta">Start a Project</a>
+    <div class="htag">Where architecture meets water</div>
+    <a class="heroCta" href="#position">Enter the Brand</a>
+  </div>
+  <div id="picker">
+    <button data-i="0" class="active">Quiet Luxury</button>
+    <button data-i="1">Architectural</button>
+    <button data-i="2">Coastal Modern</button>
+    <button data-i="3">Editorial</button>
+    <button data-i="4">Estate Classic</button>
+    <button data-i="5">Modern Editorial</button>
   </div>
 </div>
 
-<!-- ===== SPECIMENS ===== -->
-<section id="specimens">
+<!-- ===== TYPE IN CONTEXT ===== -->
+<section id="type">
   <div class="specHead">
-    <div class="k">Type in Context</div>
-    <h2>All six schemes, at play</h2>
-    <p>Each scheme shown with its headline + body pairing over a real Kiso project image.</p>
+    <div class="k">Typography</div>
+    <h2>The type, in context</h2>
+    <p>Six pairings &mdash; four sans, two serif &mdash; shown in real content. Switch the hero above to preview each on the wordmark.</p>
   </div>
   <div class="grid" id="grid"></div>
 </section>
 
-<!-- ===== BRAND COLORS ===== -->
+<!-- ===== BRAND COLORS over ledge video (no overlay) ===== -->
 <section id="palette">
-  <video class="bg" autoplay muted loop playsinline
-    poster="https://cdn.openart.ai/openart/thumbnail/production/2026-06/create-video/Ch6CJLeguTHDQJzxVO5s/73f2235c377170e5d4dc3fc05e5777dd-18208de5-cbae-4207-9d44-640161c72ce0_1782280754496_53af2be1.webp">
+  <video class="bg" autoplay muted loop playsinline poster="https://stagingkiso.elenafoundation.com/wp-content/uploads/2026/06/1I6A6312-scaled.jpg">
     <source src="https://stagingkiso.elenafoundation.com/wp-content/uploads/2026/06/openart-73f2235c377170e5d4dc3fc05e5777dd-18208de5-cbae-4207-9d44-640161c72ce0_1782280749959_846a321e.mp4" type="video/mp4">
   </video>
-  <div class="pscrim"></div>
   <div class="pinner">
     <div class="specHead">
       <div class="k">Brand Colors</div>
       <h2>The palette, at play</h2>
-      <p>Seven colors over flowing water &mdash; deep teals, travertine neutrals, and a single champagne accent.</p>
+      <p>Seven colors over flowing water &mdash; deep teals, travertine neutrals, a single champagne accent.</p>
     </div>
     <div class="swatches" id="swatches"></div>
-
     <div class="inuse">
       <div class="demo demoDark">
         <div class="eb">Commercial &middot; Deep</div>
         <h4>Engineered like architecture.</h4>
         <p>Abyss and Pool Navy ground the dark sections; Sand and Travertine carry the text; Aqua marks a <span class="lnk">link in motion</span>.</p>
-        <span class="b">Start a Project</span>
       </div>
       <div class="demo demoLight">
         <div class="eb">Residential &middot; Light</div>
         <h4>Finished like art.</h4>
         <p>On Sand backgrounds, Ink carries the type and Pool Navy the body copy, with the same champagne accent for action.</p>
-        <span class="b">Request a Consultation</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== PICKER ===== -->
-<div id="picker">
-  <button data-i="0" class="active">Quiet Luxury</button>
-  <button data-i="1">Architectural</button>
-  <button data-i="2">Coastal Modern</button>
-  <button data-i="3">Editorial</button>
-  <button data-i="4">Estate Classic</button>
-  <button data-i="5">Modern Editorial</button>
+<!-- ===== POSITIONING (top-realtor caliber) ===== -->
+<section class="light" id="position">
+  <div class="wrap">
+    <div class="eyebrow">Positioning</div>
+    <h2 class="big">Carry the brand like Miami's <span class="em">top realtors</span>.</h2>
+    <div class="divider"></div>
+    <p class="lead">The brands that dominate luxury real estate &mdash; the Jills Zeder Group, Dina Goldentayer, the Assouline team, Ryan Serhant, and others at that tier &mdash; win nine-figure listings on presentation as much as performance: restraint, authority, big imagery, and a quiet confidence in the numbers. Kiso should hold itself to that same standard. Not a pool company with a website, but a design house for water: a <strong>luxury aquatic construction specialist</strong> presented with the polish of the best brands in the business.</p>
+    <p class="lead" style="margin-top:20px">The voice is elevated and precise. We say <em>luxury</em>, never "custom." Commercial and Residential stand as two equal pillars, and the work is shown the way a top brokerage shows a trophy estate &mdash; full-bleed, unhurried, and sure of itself.</p>
+    <div class="nums">
+      <div><div class="n">2012</div><div class="l">Founded by Hiroki Kurenuma</div></div>
+      <div><div class="n">3</div><div class="l">State certifications</div></div>
+      <div><div class="n">2</div><div class="l">Pillars — Commercial + Residential</div></div>
+      <div><div class="n">14+</div><div class="l">South Florida service areas</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== VIDEO DIVIDER (hero clip) ===== -->
+<div class="band">
+  <video autoplay muted loop playsinline poster="https://stagingkiso.elenafoundation.com/wp-content/uploads/2026/06/FAR.jpg">
+    <source src="https://stagingkiso.elenafoundation.com/wp-content/uploads/2026/06/openart-f515d4511bb7d1490fa8b6d1ab995cc3-8e2c823e-76d0-4b2e-a8bb-434806d39974_1782277502859_b3f69716-1.mp4" type="video/mp4">
+  </video>
+  <div class="vscrim"></div>
+  <div class="quietline"><span class="em">Search</span> should feel as considered as the work.</div>
 </div>
+
+<!-- ===== SEO: keywords + hierarchy ===== -->
+<section class="light" id="seo">
+  <div class="wrap">
+    <div class="eyebrow">SEO &mdash; Keyword Themes</div>
+    <h2 class="big">Luxury pools, <span class="em">South Florida</span>.</h2>
+    <div class="divider"></div>
+    <p class="lead">Grouped by theme and mapped to pages. Validate volumes in a keyword tool before committing &mdash; these are strategic groupings, not volume claims.</p>
+    <div class="kg">
+      <div class="kgcard"><h4>Core service + geo</h4><div class="chips"><span class="chip2">luxury pool builder Miami</span><span class="chip2">luxury pool builder South Florida</span><span class="chip2">high-end pool contractor Miami</span><span class="chip2">aquatic construction Miami</span></div></div>
+      <div class="kgcard"><h4>Residential luxury</h4><div class="chips"><span class="chip2">estate pool builder South Florida</span><span class="chip2">custom infinity pool Miami</span><span class="chip2">vanishing edge pool Florida</span><span class="chip2">modern pool design Miami</span><span class="chip2">glass tile pool Miami</span></div></div>
+      <div class="kgcard"><h4>Commercial / hospitality</h4><div class="chips"><span class="chip2">commercial pool builder Florida</span><span class="chip2">aquatic center construction Florida</span><span class="chip2">resort pool construction Miami</span><span class="chip2">HOA / condo pool construction</span></div></div>
+      <div class="kgcard"><h4>Features / specialty</h4><div class="chips"><span class="chip2">rock waterfall &amp; grotto pools</span><span class="chip2">spa construction Miami</span><span class="chip2">fountains &amp; water features</span><span class="chip2">pool renovation Miami</span></div></div>
+      <div class="kgcard"><h4>Locations</h4><div class="chips"><span class="chip2">Coral Gables</span><span class="chip2">Pinecrest</span><span class="chip2">Coconut Grove</span><span class="chip2">Golden Beach</span><span class="chip2">Bal Harbour</span><span class="chip2">Sunny Isles</span><span class="chip2">Miami Beach</span><span class="chip2">The Keys</span></div></div>
+      <div class="kgcard"><h4>Intent / trust</h4><div class="chips"><span class="chip2">best luxury pool builder Miami</span><span class="chip2">licensed pool contractor Miami</span><span class="chip2">certified commercial pool builder</span><span class="chip2">custom infinity pool cost Miami</span></div></div>
+    </div>
+    <h3 style="font-size:30px;margin-top:62px">Service <span class="em">hierarchy</span></h3>
+    <div class="tree">Services (overview)
+├── Pool Construction
+│     ├── Luxury Residential Pools
+│     └── Commercial Pools
+├── Spas
+├── Fountains &amp; Water Features
+├── Aquatic Centers (commercial)
+├── Renovations &amp; Enhancements   (pending)
+└── Service &amp; Maintenance        (pending)
+
+Portfolio = organized by PROJECT TYPE, tagged by LOCATION.</div>
+  </div>
+</section>
+
+<!-- ===== Per-page SEO ===== -->
+<section id="pages">
+  <div class="wrap">
+    <div class="eyebrow">Page-by-Page</div>
+    <h2 class="big">H1, H2s, <span class="em">title</span> &amp; meta.</h2>
+    <div class="divider"></div>
+    <div class="pages">
+      <div class="pcard"><div class="pg">Home</div><h4>Luxury Pool &amp; Aquatic Construction in Miami</h4>
+        <div class="h2s"><span>Commercial</span><span>Residential</span><span>Services</span><span>Featured Projects</span><span>The Kiso Standard</span></div>
+        <div class="lbl">Title</div><div class="val">Luxury Pool Builder in Miami | Kiso Group</div>
+        <div class="lbl">Meta</div><div class="val">Kiso Group builds luxury pools, spas &amp; aquatic centers for Miami's finest residential and commercial properties. Start your project with South Florida's aquatic specialists.</div></div>
+      <div class="pcard"><div class="pg">Services</div><h4>Aquatic Construction Services</h4>
+        <div class="h2s"><span>Pools</span><span>Spas</span><span>Water Features</span><span>Aquatic Centers</span><span>Renovations</span></div>
+        <div class="lbl">Title</div><div class="val">Luxury Pool &amp; Aquatic Services | Kiso Group Miami</div>
+        <div class="lbl">Meta</div><div class="val">From custom luxury pools to commercial aquatic centers, explore Kiso Group's full range of aquatic construction services across South Florida.</div></div>
+      <div class="pcard"><div class="pg">Portfolio &middot; Commercial</div><h4>Commercial Aquatic Construction</h4>
+        <div class="h2s"><span>Resorts &amp; Hospitality</span><span>Aquatic Centers</span><span>Amenity Decks</span></div>
+        <div class="lbl">Title</div><div class="val">Commercial Pool &amp; Aquatic Center Builder Florida | Kiso</div>
+        <div class="lbl">Meta</div><div class="val">Kiso Group delivers commercial pools, resort water features, and aquatic centers built to luxury standards across South Florida.</div></div>
+      <div class="pcard"><div class="pg">Portfolio &middot; Residential</div><h4>Luxury Residential Pools</h4>
+        <div class="h2s"><span>Estate Pools</span><span>Infinity Edge</span><span>Spas &amp; Features</span></div>
+        <div class="lbl">Title</div><div class="val">Luxury Residential Pool Builder Miami | Kiso Group</div>
+        <div class="lbl">Meta</div><div class="val">Custom luxury pools, spas, and water features for Miami's premier estates. See Kiso Group's residential portfolio.</div></div>
+      <div class="pcard"><div class="pg">About</div><h4>Building South Florida's Most Distinguished Aquatic Environments</h4>
+        <div class="h2s"><span>Our Approach</span><span>Leadership</span><span>Credentials</span></div>
+        <div class="lbl">Title</div><div class="val">About Kiso Group | Luxury Aquatic Construction Miami</div>
+        <div class="lbl">Meta</div><div class="val">Meet Kiso Group — the South Florida team engineering and finishing luxury pools and aquatic projects for residential and commercial clients.</div></div>
+      <div class="pcard"><div class="pg">Contact</div><h4>Start a Project</h4>
+        <div class="h2s"><span>Request a Consultation</span><span>Project Inquiry</span><span>Contact Details</span></div>
+        <div class="lbl">Title</div><div class="val">Contact Kiso Group | Start a Pool Project in Miami</div>
+        <div class="lbl">Meta</div><div class="val">Ready to build? Request a consultation with Kiso Group, Miami's luxury pool and aquatic construction specialists.</div></div>
+    </div>
+    <h3 style="font-size:30px;margin-top:62px">CTA <span class="em">strategy</span></h3>
+    <p class="lead muted" style="margin-top:14px">One primary action repeated sitewide: <strong>Start a Project</strong> (alternates: Discuss a Project, Request a Consultation). Sticky in nav, after the hero, after each section, and a full contact block before the footer. Secondary: View Portfolio. Optional form dropdown: Commercial / Residential / Other.</p>
+  </div>
+</section>
+
+<!-- ===== VIDEO DIVIDER (ledge clip) ===== -->
+<div class="band">
+  <video autoplay muted loop playsinline poster="https://stagingkiso.elenafoundation.com/wp-content/uploads/2026/06/1I6A6312-scaled.jpg">
+    <source src="https://stagingkiso.elenafoundation.com/wp-content/uploads/2026/06/openart-73f2235c377170e5d4dc3fc05e5777dd-18208de5-cbae-4207-9d44-640161c72ce0_1782280749959_846a321e.mp4" type="video/mp4">
+  </video>
+  <div class="vscrim"></div>
+  <div class="quietline">The work is ready. The <span class="em">code</span> behind it should be too.</div>
+</div>
+
+<!-- ===== STRUCTURED DATA FINDING + SCHEMA ===== -->
+<section class="light" id="schema">
+  <div class="wrap">
+    <div class="eyebrow">Structured Data &mdash; Current State</div>
+    <h2 class="big">Right now, the site has <span class="em">none</span>.</h2>
+    <div class="divider"></div>
+    <p class="lead">A Google Rich Results test of <strong>kisogroup.com</strong> returns <strong>"No items detected."</strong> The page crawls fine, but with no structured data Google can't confidently read Kiso as a local business or surface its services, area, and credentials. A fast, high-leverage fix.</p>
+    <div class="gcard">
+      <div class="top"><div class="icon">i</div><div><h3>No items detected</h3><p>No rich results detected in this URL. Learn more</p></div></div>
+      <div class="tabs"><b>VIEW TESTED PAGE</b>PREVIEW RESULTS</div>
+      <div class="crawl"><span class="ok">&#10003;</span> Crawled successfully on Jun 24, 2026, 2:15:17 AM</div>
+    </div>
+    <p class="lead" style="margin-top:40px">Adding JSON-LD <strong>LocalBusiness / GeneralContractor</strong> markup makes Kiso machine-readable: name, the three certifications, founder, address, phone, cities served, and services. Below is the ready schema, built from the live site's real data.</p>
+    <div class="install">Install: paste inside &lt;head&gt; as &lt;script type="application/ld+json"&gt; … &lt;/script&gt;</div>
+<pre class="code">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": ["GeneralContractor", "LocalBusiness"],
+      "@id": "https://kisogroup.com/#business",
+      "name": "KISO GROUP, LLC",
+      "alternateName": "Kiso Group",
+      "description": "Founded in 2012 by Hiroki Kurenuma, Kiso Group is a Certified General Contractor, Certified Commercial and Residential Swimming Pool Contractor, and Certified Plumbing Contractor — a luxury aquatic construction specialist serving Miami and South Florida.",
+      "url": "https://kisogroup.com/",
+      "telephone": "+1-786-717-5003",
+      "foundingDate": "2012",
+      "founder": { "@type": "Person", "name": "Hiroki Kurenuma" },
+      "priceRange": "$$$$",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "2760 NW 22nd Street",
+        "addressLocality": "Miami", "addressRegion": "FL",
+        "postalCode": "33142", "addressCountry": "US"
+      },
+      "areaServed": ["Miami","Miami Beach","Coral Gables","Coconut Grove",
+        "Pinecrest","Palmetto Bay","South Miami","Golden Beach","Sunny Isles",
+        "Fort Lauderdale","The Florida Keys","Bal Harbour","Bay Harbor Islands","Grove Isle"],
+      "hasCredential": [
+        { "@type": "EducationalOccupationalCredential", "credentialCategory": "license", "name": "Certified General Contractor" },
+        { "@type": "EducationalOccupationalCredential", "credentialCategory": "license", "name": "Certified Commercial and Residential Swimming Pool Contractor" },
+        { "@type": "EducationalOccupationalCredential", "credentialCategory": "license", "name": "Certified Plumbing Contractor" }
+      ],
+      "sameAs": [
+        "https://www.facebook.com/490378724374847",
+        "https://www.instagram.com/kisogroup"
+      ]
+    },
+    { "@type": "WebSite", "@id": "https://kisogroup.com/#website",
+      "url": "https://kisogroup.com/", "name": "KISO GROUP, LLC",
+      "publisher": { "@id": "https://kisogroup.com/#business" }, "inLanguage": "en-US" }
+  ]
+}</pre>
+    <p class="muted" style="font-size:13px;margin-top:18px;color:#5a6a72">Full version (with services, FAQ + Organization blocks) ships as <code>Kiso_SEO_Schema.jsonld</code>. Verify the ZIP (33142) and geo before publishing.</p>
+  </div>
+</section>
+
+<!-- ===== CLOSE ===== -->
+<section class="navy" style="text-align:center">
+  <div class="wrap">
+    <div class="eyebrow">The Kiso Standard</div>
+    <h2 class="big">Built to be <span class="em">unforgettable</span>.</h2>
+    <a class="cta" href="#stage">Back to top</a>
+  </div>
+</section>
+
+<footer>
+  <div class="brand">KISO&nbsp;GROUP</div>
+  <p>Luxury Aquatic Construction &middot; Miami, Florida &middot; Brand Experience &amp; SEO Guidebook</p>
+</footer>
 
 <script>
 const schemes = [
   { name:'Quiet Luxury',  display:'Jost',          dw:300, track:'.16em', tt:'uppercase', body:'Inter',
-    note:'Geometric, Futura-like. Understated, fashion-grade. Wide tracking, light weight.' },
+    note:'Geometric, Futura-like. Understated, fashion-grade.' },
   { name:'Architectural', display:'Archivo',       dw:700, track:'.01em', tt:'uppercase', body:'Inter',
-    note:'Structural and confident. Reads engineering + commercial scale. Tight, bold.' },
+    note:'Structural and confident. Engineering + commercial scale.' },
   { name:'Coastal Modern',display:'Outfit',        dw:300, track:'.06em', tt:'none',      body:'Manrope',
-    note:'Soft, airy, resort-modern. Clean and friendly without losing polish.' },
+    note:'Soft, airy, resort-modern. Clean and friendly.' },
   { name:'Editorial',     display:'Syne',          dw:700, track:'.005em',tt:'uppercase', body:'Inter',
-    note:'Design-forward, gallery energy. Distinctive letterforms for a bold luxury brand.' },
+    note:'Design-forward, gallery energy. Distinctive letterforms.' },
   { name:'Estate Classic',  display:'Cormorant Garamond', dw:400, track:'.07em', tt:'uppercase', body:'Montserrat',
-    note:'SERIF headline. High-contrast, old-money elegance + Montserrat body. Refined estate luxury.' },
+    note:'SERIF. High-contrast, old-money elegance + Montserrat body.' },
   { name:'Modern Editorial',display:'Playfair Display',   dw:500, track:'.005em',tt:'none',      body:'Lato',
-    note:'SERIF headline. Classic editorial Playfair + warm Lato body. Magazine-grade luxury.' }
+    note:'SERIF. Classic editorial Playfair + warm Lato body.' }
 ];
-
-/* ---- hero live switch ---- */
 const root = document.documentElement.style;
 const spec = document.getElementById('spec');
 function apply(i){
@@ -216,47 +435,38 @@ function apply(i){
   root.setProperty('--track', s.track);
   root.setProperty('--tt', s.tt);
   root.setProperty('--body', "'"+s.body+"'");
-  spec.innerHTML = `<div class="name">${s.name}</div>
-    <div><b>Headlines:</b> ${s.display} ${s.dw}</div>
-    <div><b>Body / UI:</b> ${s.body}</div>
-    <div style="margin-top:8px;opacity:.85">${s.note}</div>`;
+  spec.innerHTML = `<div class="name">${s.name}</div><div><b>Headlines:</b> ${s.display} ${s.dw}</div><div><b>Body:</b> ${s.body}</div><div style="margin-top:8px;opacity:.85">${s.note}</div>`;
   document.querySelectorAll('#picker button').forEach((b,bi)=> b.classList.toggle('active', bi===i));
 }
 document.querySelectorAll('#picker button').forEach(b=> b.addEventListener('click', ()=> apply(+b.dataset.i)));
 apply(0);
 
-/* ---- build specimen cards (all six, fixed to their own fonts) ---- */
 const lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.";
 const grid = document.getElementById('grid');
 schemes.forEach((s,i)=>{
-  const card = document.createElement('div');
-  card.className = 'card';
-  const n = (i+1).toString().padStart(2,'0');
-  card.innerHTML = `
-    <div class="cap">${n} &middot; ${s.name} &mdash; ${s.display} / ${s.body}</div>
-    <div class="line"></div>
+  const c = document.createElement('div'); c.className='tcard';
+  const n=(i+1).toString().padStart(2,'0');
+  c.innerHTML = `<div class="cap">${n} &middot; ${s.name} &mdash; ${s.display} / ${s.body}</div>
+    <div class="l"></div>
     <h3 style="font-family:'${s.display}',serif;font-weight:${s.dw};letter-spacing:${s.track};text-transform:${s.tt}">Lorem ipsum dolor sit amet</h3>
     <p style="font-family:'${s.body}',sans-serif">${lorem}</p>
     <a class="cta2" style="font-family:'${s.body}',sans-serif">Start a Project</a>`;
-  grid.appendChild(card);
+  grid.appendChild(c);
 });
 
-/* ---- brand color swatches (with hex codes) ---- */
 const palette = [
-  { name:'Abyss',      hex:'#06202B', role:'Primary deep' },
-  { name:'Pool Navy',  hex:'#04303F', role:'Deep teal' },
+  { name:'Abyss', hex:'#06202B', role:'Primary deep' },
+  { name:'Pool Navy', hex:'#04303F', role:'Deep teal' },
   { name:'Travertine', hex:'#E7DDC9', role:'Neutral light' },
-  { name:'Sand',       hex:'#F2EAD8', role:'Off-white' },
-  { name:'Champagne',  hex:'#C9A96A', role:'Accent metallic' },
-  { name:'Aqua',       hex:'#2F8AA6', role:'Water highlight' },
-  { name:'Ink',        hex:'#06141B', role:'Near-black' }
+  { name:'Sand', hex:'#F2EAD8', role:'Off-white' },
+  { name:'Champagne', hex:'#C9A96A', role:'Accent metallic' },
+  { name:'Aqua', hex:'#2F8AA6', role:'Water highlight' },
+  { name:'Ink', hex:'#06141B', role:'Near-black' }
 ];
 const sw = document.getElementById('swatches');
 palette.forEach(c=>{
-  const el = document.createElement('div');
-  el.className = 'sw';
-  el.innerHTML = `<div class="chip" style="background:${c.hex}"></div>
-    <div class="meta"><div class="nm">${c.name}</div><div class="hex">${c.hex}</div><div class="role">${c.role}</div></div>`;
+  const el=document.createElement('div'); el.className='sw';
+  el.innerHTML=`<div class="chip" style="background:${c.hex}"></div><div class="meta"><div class="nm">${c.name}</div><div class="hex">${c.hex}</div><div class="role">${c.role}</div></div>`;
   sw.appendChild(el);
 });
 </script>
